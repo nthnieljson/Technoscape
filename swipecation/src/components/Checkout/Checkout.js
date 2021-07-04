@@ -68,7 +68,7 @@ const Checkout = () => {
           </p>
           <form>
             <div className="input-container">
-              <label>
+              <label className="label-container">
                 <p className="body-small tag" style={{ paddingTop: "8px" }}>
                   Email
                 </p>
@@ -78,11 +78,11 @@ const Checkout = () => {
                   placeholder="lorem.ipsum@gmail.com"
                 />
               </label>
-              <label>
+              <label className="label-container">
                 <p className="body-small tag">Password</p>
                 <input className="field" type="text" placeholder="Password" />
               </label>
-              <label>
+              <label className="label-container">
                 <p className="body-small tag">Full Name</p>
                 <input
                   className="field"
@@ -90,7 +90,7 @@ const Checkout = () => {
                   placeholder="Your full name"
                 />
               </label>
-              <label>
+              <label className="label-container">
                 <p className="body-small tag">Phone Number</p>
                 <input
                   className="field"
@@ -98,11 +98,11 @@ const Checkout = () => {
                   placeholder="+62 000 0000 0000"
                 />
               </label>
-              <label>
+              <label className="label-container">
                 <p className="body-small tag">City</p>
                 <input className="field" type="text" placeholder="City name" />
               </label>
-              <label>
+              <label className="label-container">
                 <p className="body-small tag">Address</p>
                 <input
                   className="field address"
@@ -143,11 +143,18 @@ const Checkout = () => {
           }
 
           .p-bold {
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
             font-weight: bold;
           }
 
           .tertiary {
-            color: ${COLOR.TERTIARY}Z;
+            color: ${COLOR.TERTIARY};
+          }
+
+          .label-container {
+            width: 100%;
           }
 
           .body-small {
