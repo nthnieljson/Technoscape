@@ -1,5 +1,8 @@
-import { SwipeableCards } from "./components/global/SwipeableCards.jsx";
-import "./App.css";
+import { DataProvider } from "./context/data";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import TempHome from "./pages/TempHome";
+import CreateBooking from "./pages/CreateBooking";
+import Navbar from "./components/Navbar/Navbar";
 
 const cityData = [
   {
@@ -59,10 +62,21 @@ const staycationData = [
 
 function App() {
   return (
-    <div className="App">
-      <SwipeableCards data={cityData} />
-      <SwipeableCards data={staycationData} />
-    </div>
+    <DataProvider>
+      <BrowserRouter basename="/">
+        <div className="app">
+          <div className="mb-5">
+            <Navbar />
+          </div>
+          <div className="container">
+            <Switch>
+              <Route path="/booking/create" component={CreateBooking} />
+              <Route path="/" component={TempHome} />
+            </Switch>
+          </div>
+        </div>
+      </BrowserRouter>
+    </DataProvider>
   );
 }
 
