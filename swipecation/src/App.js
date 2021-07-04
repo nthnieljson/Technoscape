@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import TempHome from "./pages/TempHome";
 import CreateBooking from "./pages/CreateBooking";
 import Navbar from "./components/Navbar/Navbar";
+import Staycation from "./components/Staycation/Staycation";
 
 const cityData = [
   {
@@ -71,7 +72,7 @@ function App() {
           <div className="container">
             <Switch>
               <Route path="/booking/create" component={CreateBooking} />
-              <Route path="/" component={TempHome} />
+              <Route path="/" component={Staycation} />
             </Switch>
           </div>
         </div>
