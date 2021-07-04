@@ -1,5 +1,8 @@
 import React, { useContext } from "react";
+import Checkout from "../components/Checkout/Checkout";
+import City from "../components/City/City";
 import Question from "../components/Question/Question";
+import Staycation from "../components/Staycation/Staycation";
 import { DataContext } from "../context/data";
 
 const CreateBooking = () => {
@@ -9,7 +12,11 @@ const CreateBooking = () => {
       case 0:
         return <Question />;
       case 1:
-        return <h1>City</h1>;
+        return <City />;
+      case 2:
+        return <Staycation />;
+      case 3:
+        return <Checkout />;
     }
   };
   return getBookingProcessElement();
