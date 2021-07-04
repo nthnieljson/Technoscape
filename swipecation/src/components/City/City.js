@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { DataContext } from "../../context/data";
 
 const City = () => {
-  const { setProcessNo } = useContext(DataContext);
+  const { handleChangeProcess } = useContext(DataContext);
   const handleSelectCity = () => {
-    setProcessNo(2);
+    handleChangeProcess(2);
   };
   return (
     <>

@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { DataContext } from "../../context/data";
 
 const Staycation = () => {
-  const { setProcessNo } = useContext(DataContext);
+  const { handleChangeProcess } = useContext(DataContext);
   const handleSelectStaycation = () => {
-    setProcessNo(3);
+    handleChangeProcess(3);
   };
   return (
     <>

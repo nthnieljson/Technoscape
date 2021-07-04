@@ -14,7 +14,7 @@ const Question = () => {
       <div>
         <div className="text-center">
           <p
-            className="question-statement"
+            className="mb-5"
             style={{
               fontSize: "1rem",
               color: COLOR.DARK,
@@ -26,11 +26,6 @@ const Question = () => {
         </div>
         <AnswerList data={data} />
       </div>
-      <style>
-        {`
-
-                `}
-      </style>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { DataContext } from "../../context/data";
 
 const AnswerOption = (props) => {
   const { data, padding } = props;
-  const { setProcessNo, questionData, setQuestionData } =
+  const { handleChangeProcess, questionData, setQuestionData } =
     useContext(DataContext);
   const handleAnswer = () => {
     const { currentQuestionId, answers } = questionData;
@@ -23,7 +23,7 @@ const AnswerOption = (props) => {
     });
 
     if (data.nextQuestionId === -1) {
-      setProcessNo(1);
+      handleChangeProcess(1);
     }
   };
   return (
