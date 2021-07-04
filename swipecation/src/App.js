@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { DataProvider } from "./context/data";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import TempHome from "./pages/TempHome";
+import CreateBooking from "./pages/CreateBooking";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <BrowserRouter basename="/">
+        <div className="app">
+          <h1>
+            <div>
+              <h1>Swipecation</h1>
+            </div>
+            <div className="container">
+              <Switch>
+                <Route path="/booking/create" component={CreateBooking} />
+                <Route path="/" component={TempHome} />
+              </Switch>
+            </div>
+          </h1>
+        </div>
+      </BrowserRouter>
+    </DataProvider>
   );
 }
 
