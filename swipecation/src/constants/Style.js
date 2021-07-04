@@ -1,0 +1,9 @@
+export const COLOR = {
+  DARK: "#371B0E",
+  TERTIARY: "#EE5E1A",
+  SECONDARY: "#FFA440",
+  ACCENT_1: "#FFCF5D",
+  PRIMARY: "#FFE577",
+  ACCENT_2: "#A1D4DE",
+  LIGHT: "#F5FDFF",
+};
