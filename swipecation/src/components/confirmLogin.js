@@ -1,4 +1,4 @@
-import eye from "./eye.png"
+import eye from "../images/eye.png"
 import React from "react";
 const ConfirmLogin = () =>{
     return(
