@@ -4,54 +4,54 @@ import "./App.css";
 const cityData = [
   {
     url: "https://picsum.photos/300",
-    name: "West Jakarta, Jakarta",
+    title: "West Jakarta, Jakarta",
   },
   {
     url: "https://picsum.photos/300",
-    name: "East Jakarta, Jakarta",
+    title: "East Jakarta, Jakarta",
   },
   {
     url: "https://picsum.photos/300",
-    name: "North Jakarta, Jakarta",
+    title: "North Jakarta, Jakarta",
   },
   {
     url: "https://picsum.photos/300",
-    name: "South Jakarta, Jakarta",
+    title: "South Jakarta, Jakarta",
   },
   {
     url: "https://picsum.photos/300",
-    name: "Tokyo, Japan",
+    title: "Tokyo, Japan",
   },
 ];
 
 const staycationData = [
   {
     url: "https://picsum.photos/300",
-    name: "Hotel A",
+    title: "Hotel A",
     rating: "3.0",
     cost: "250k",
   },
   {
     url: "https://picsum.photos/300",
-    name: "Apartment A",
+    title: "Apartment A",
     rating: "3.0",
     cost: "250k",
   },
   {
     url: "https://picsum.photos/300",
-    name: "Hotel B",
+    title: "Hotel B",
     rating: "3.0",
     cost: "250k",
   },
   {
     url: "https://picsum.photos/300",
-    name: "Villa A",
+    title: "Villa A",
     rating: "3.0",
     cost: "250k",
   },
   {
     url: "https://picsum.photos/300",
-    name: "Apartment B",
+    title: "Apartment B",
     rating: "3.0",
     cost: "250k",
   },
