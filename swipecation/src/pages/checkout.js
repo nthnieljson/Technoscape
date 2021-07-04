@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import gopay from './images/gopay.png';
+import ovo from './images/ovo.png';
 
 const Checkout = () => {
+  const [showTransfer, setShowTransfer] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowTransfer(true);
+  }
+
   return (
     <div className="container">
       <h4 className="center checkout">Checkout</h4>
@@ -17,43 +26,61 @@ const Checkout = () => {
         <p className="p-bold">Total</p>
         <h4 className="tertiary">IDR 1290K</h4>
       </div>
-      <p className="p-bold center" style={{marginTop: "28px", marginBottom: "16px"}}>Contact Information</p>
-      <p>
-        Seems like you haven’t created an account yet. Don’t worry, 
-        we’ve made it easy for you to register during the checkout process. 
-        Please input your data in the form below. You will be able to proceed 
-        to payment methods after registering.
-      </p>
-      <p className="p-bold tertiary">I have an account</p>
-      <form>
-        <div className="input-container">
-          <label>
-            <p className="body-small tag">Email</p>
-            <input className="field" type="text" placeholder="lorem.ipsum@gmail.com" />
-          </label>
-          <label>
-            <p className="body-small tag">Password</p>
-            <input className="field" type="text" placeholder="Password" />
-          </label>
-          <label>
-            <p className="body-small tag">Full Name</p>
-            <input className="field" type="text" placeholder="Your full name" />
-          </label>
-          <label>
-            <p className="body-small tag">Phone Number</p>
-            <input className="field" type="text" placeholder="+62 000 0000 0000" />
-          </label>
-          <label>
-            <p className="body-small tag">City</p>
-            <input className="field" type="text" placeholder="City name" />
-          </label>
-          <label>
-            <p className="body-small tag">Address</p>
-            <input className="field" type="text" placeholder="Your complete address" />
-          </label>
+      {showTransfer
+        ? 
+        <div className="stage-two">
+          <p className="p-bold center" style={{marginTop: "28px", marginBottom: "16px"}}>Payment Methods</p>
+          <div className="split">
+            <div className="payment-container">
+              <img className="payment-method" src={ovo} alt="ovo logo" />
+            </div>
+            <div className="payment-container">
+              <img className="payment-method" src={gopay} alt="gopay logo" />
+            </div>
+          </div>
+          <input className="p-bold submit-btn" type="submit" value="Bank Transfer" />
         </div>
-        <input className="p-bold submit-btn" type="submit" value="Register now" />
-      </form>
+        :
+        <div className="stage-one">
+          <p className="p-bold center" style={{marginTop: "28px", marginBottom: "16px"}}>Contact Information</p>
+          <p>
+            Seems like you haven’t created an account yet. Don’t worry,
+            we’ve made it easy for you to register during the checkout process.
+            Please input your data in the form below. You will be able to proceed
+            to payment methods after registering.
+          </p>
+          <p className="p-bold tertiary" style={{paddingTop: "4px"}}>I have an account</p>
+          <form>
+            <div className="input-container">
+              <label>
+                <p className="body-small tag" style={{paddingTop: "8px"}}>Email</p>
+                <input className="field" type="text" placeholder="lorem.ipsum@gmail.com" />
+              </label>
+              <label>
+                <p className="body-small tag">Password</p>
+                <input className="field" type="text" placeholder="Password" />
+              </label>
+              <label>
+                <p className="body-small tag">Full Name</p>
+                <input className="field" type="text" placeholder="Your full name" />
+              </label>
+              <label>
+                <p className="body-small tag">Phone Number</p>
+                <input className="field" type="text" placeholder="+62 000 0000 0000" />
+              </label>
+              <label>
+                <p className="body-small tag">City</p>
+                <input className="field" type="text" placeholder="City name" />
+              </label>
+              <label>
+                <p className="body-small tag">Address</p>
+                <input className="field address" type="text" placeholder="Your complete address" />
+              </label>
+            </div>
+            <input className="p-bold submit-btn" type="submit" onClick={handleClick} value="Register now" />
+          </form>
+        </div>
+      }
       <style jsx>
         {`
           body, html {
@@ -100,6 +127,24 @@ const Checkout = () => {
             line-height: 20px;
           }
 
+          .payment-container {
+            width: 150px;
+            display: flex;
+            justify-content: center;
+
+            /* light */
+            background: #F5FDFF;
+            /* secondary */
+            border: 1px solid #FFA440;
+            box-sizing: border-box;
+            border-radius: 12px;
+          }
+
+          .payment-method {
+            height: 50px;
+            margin: 8px 0;
+          }
+
           .center {
             text-align: center;
           }
@@ -140,6 +185,10 @@ const Checkout = () => {
             box-sizing: border-box;
             border-radius: 8px;
           }
+
+          .address {
+            padding-bottom: 54px;
+          }
           
           .submit-btn {
             font-family: inherit;
@@ -159,7 +208,7 @@ const Checkout = () => {
         `}
       </style>
     </div>
-  );
+  )
 };
 
 export default Checkout;
