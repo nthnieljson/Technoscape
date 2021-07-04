@@ -1,23 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import { SwipeableCards } from "./components/global/SwipeableCards.jsx";
+import "./App.css";
+
+const cityData = [
+  {
+    url: "https://picsum.photos/300",
+    name: "West Jakarta, Jakarta",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "East Jakarta, Jakarta",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "North Jakarta, Jakarta",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "South Jakarta, Jakarta",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "Tokyo, Japan",
+  },
+];
+
+const staycationData = [
+  {
+    url: "https://picsum.photos/300",
+    name: "Hotel A",
+    rating: "3.0",
+    cost: "250k",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "Apartment A",
+    rating: "3.0",
+    cost: "250k",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "Hotel B",
+    rating: "3.0",
+    cost: "250k",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "Villa A",
+    rating: "3.0",
+    cost: "250k",
+  },
+  {
+    url: "https://picsum.photos/300",
+    name: "Apartment B",
+    rating: "3.0",
+    cost: "250k",
+  },
+];
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SwipeableCards data={cityData} />
+      <SwipeableCards data={staycationData} />
     </div>
   );
 }
