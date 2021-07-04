@@ -53,111 +53,111 @@ const Checkout = () => {
           </label>
         </div>
         <input className="p-bold submit-btn" type="submit" value="Register now" />
-        <style jsx>
-          {`
-            body, html {
-              font-family: 'Montserrat', sans-serif;
-              color: #371B0E;
-
-            }
-            .container {
-              margin: 0 28px;
-            }
-
-            .checkout {
-              margin-bottom: 11px;
-            }
-
-            p {
-              font-style: normal;
-              font-weight: normal;
-              font-size: 16px;
-              line-height: 24px;
-              margin: 0;
-            }
-
-            h4 {
-              font-style: normal;
-              font-weight: bold;
-              font-size: 20px;
-              line-height: 32px;
-              margin: 0;
-            }
-
-            .p-bold {
-              font-weight: bold;
-            }
-
-            .tertiary {
-              color: #EE5E1A;
-            }
-
-            .body-small {
-              font-style: normal;
-              font-weight: normal;
-              font-size: 14px;
-              line-height: 20px;
-            }
-
-            .center {
-              text-align: center;
-            }
-
-            .split {
-              display: flex;
-              justify-content: space-between;
-            }
-
-            .penginapan {
-              margin-bottom: 8px;
-            }
-
-            hr {
-              margin-top: 0;
-              border: 1px solid #FFE577;
-            }
-
-            .tag {
-              margin-top: 10px;
-              margin-bottom: 4px;
-            }
-
-            .field {
-              width: 100%;
-              font-family: inherit;
-              font-style: normal;
-              font-weight: normal;
-              font-size: 16px;
-              line-height: 24px;
-              padding: 10px 12px;
-              
-              /* light */
-              background: #F5FDFF;
-              
-              /* secondary */
-              border: 2px solid #FFA440;
-              box-sizing: border-box;
-              border-radius: 8px;
-            }
-            
-            .submit-btn {
-              font-family: inherit;
-              color: #F5FDFF;
-              width: 100%;
-              margin-top: 20px;
-              margin-bottom: 37px;
-              height: 45px;
-
-              /* tertiary */
-              background: #EE5E1A;
-              /* tertiary */
-              border: 1px solid #EE5E1A;
-              box-sizing: border-box;
-              border-radius: 8px;
-            }
-          `}
-        </style>
       </form>
+      <style jsx>
+        {`
+          body, html {
+            font-family: 'Montserrat', sans-serif;
+            color: #371B0E;
+
+          }
+          .container {
+            margin: 0 28px;
+          }
+
+          .checkout {
+            margin-bottom: 11px;
+          }
+
+          p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+          }
+
+          h4 {
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 32px;
+            margin: 0;
+          }
+
+          .p-bold {
+            font-weight: bold;
+          }
+
+          .tertiary {
+            color: #EE5E1A;
+          }
+
+          .body-small {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 20px;
+          }
+
+          .center {
+            text-align: center;
+          }
+
+          .split {
+            display: flex;
+            justify-content: space-between;
+          }
+
+          .penginapan {
+            margin-bottom: 8px;
+          }
+
+          hr {
+            margin-top: 0;
+            border: 1px solid #FFE577;
+          }
+
+          .tag {
+            margin-top: 10px;
+            margin-bottom: 4px;
+          }
+
+          .field {
+            width: 100%;
+            font-family: inherit;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 24px;
+            padding: 10px 12px;
+            
+            /* light */
+            background: #F5FDFF;
+            
+            /* secondary */
+            border: 2px solid #FFA440;
+            box-sizing: border-box;
+            border-radius: 8px;
+          }
+          
+          .submit-btn {
+            font-family: inherit;
+            color: #F5FDFF;
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 37px;
+            height: 45px;
+
+            /* tertiary */
+            background: #EE5E1A;
+            /* tertiary */
+            border: 1px solid #EE5E1A;
+            box-sizing: border-box;
+            border-radius: 8px;
+          }
+        `}
+      </style>
     </div>
   );
 };
