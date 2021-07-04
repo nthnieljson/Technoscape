@@ -1,9 +1,9 @@
-import eye from "../images/eye.png"
+import eye from "../../images/eye.png"
 import React from "react";
 const ConfirmLogin = () =>{
     return(
         <div className="container">
-            <div style={{padding:".75rem 2rem"}}>
+            <div style={{padding:"1.5rem 1rem", paddingTop:"2.25rem"}}>
                 <h4 className="h4-tertiary text" >Login</h4>
                 <p className = "body-small text" >Email</p>
                 <div className="input-container text input">
@@ -11,15 +11,15 @@ const ConfirmLogin = () =>{
                 </div>
                 <p className = "body-small text" >Password</p>
                 <div className="input-container text input">
-                    <input placeholder="password"/>
+                    <input type="password" placeholder="password"/>
                     <img src={eye} alt="eye" />
                 </div>
-                <div  style={{display:"flex", justifyContent:"space-between", flexWrap:"wrap"}}>
+                <div  style={{display:"flex", justifyContent:"space-between"}}>
                     <div className="flex-item">
                         <button className="button" style={{
                                 color: "#EE5E1A",
                                 backgroundColor: "transparent",
-                                borderColor: "#EE5E1A",
+                                border: "2px solid #EE5E1A",
                         }}>Cancel</button>
                     </div>
                     <div className="flex-item">
@@ -33,9 +33,6 @@ const ConfirmLogin = () =>{
             </div>
             <style>
                 {`
-                    body, html {
-                        font-family: 'Montserrat', sans-serif;
-                    }
                     .container{
                         margin:auto;
                         border-radius: 12px;
@@ -56,6 +53,7 @@ const ConfirmLogin = () =>{
                     .h4-tertiary{
                         font-size: 1.25rem;
                         margin-bottom: 0px;
+                        font-weight: 700;
                     }
                     .text{
                         text-align : left;
