@@ -7,24 +7,31 @@ const Navbar = () => {
   const getNavbarTitle = () => {
     switch (processNo) {
       case 0:
-        return "Your ideal staycation";
+        return "My Preferences";
       case 1:
-        return "Select City";
+        return "Choose City";
       case 2:
         return "Staycation Location";
       case 3:
         return "Checkout";
       default:
-        return "Swipecation";
+        return (
+          <p
+            style={{
+              background:
+                "linear-gradient(92.36deg, #9175DB 0%, #FFB9DB 95.67%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            swipecation
+          </p>
+        );
     }
   };
   return (
     <>
-      <div
-        style={{
-          backgroundColor: COLOR.PRIMARY,
-        }}
-      >
+      <div>
         <div className="container d-flex align-items-center justify-content-between">
           <p
             style={{
@@ -39,19 +46,6 @@ const Navbar = () => {
           >
             {getNavbarTitle()}
           </p>
-          <button
-            style={{
-              color: COLOR.TERTIARY,
-              border: `1px solid ${COLOR.TERTIARY}`,
-              borderRadius: "8px",
-              fontSize: ".75rem",
-              fontWeight: "700",
-              margin: ".5rem 0 0 1rem",
-              padding: ".25rem .5rem",
-            }}
-          >
-            Login
-          </button>
         </div>
       </div>
     </>

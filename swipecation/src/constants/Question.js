@@ -120,7 +120,7 @@ export const QUESTION_DATA = [
     options: [
       {
         id: 0,
-        option: "reading books",
+        option: "reading literature",
         nextQuestionId: -1,
       },
       {

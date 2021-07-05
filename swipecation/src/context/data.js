@@ -5,6 +5,7 @@ export const DataContext = createContext();
 export const DataProvider = (props) => {
   const [processNo, setProcessNo] = useState(-1);
   const [maxProcessNo, setMaxProcessNo] = useState(-1);
+  const [chosenDestination, setChosenDestination] = useState([]);
   const [questionData, setQuestionData] = useState({
     currentQuestionId: 0,
     answers: [],
@@ -13,6 +14,10 @@ export const DataProvider = (props) => {
   const handleChangeProcess = (newProcessNo) => {
     setProcessNo(newProcessNo);
     setMaxProcessNo(Math.max(maxProcessNo, newProcessNo));
+  };
+
+  const handleAddChosenDestination = (newDestination) => {
+    setChosenDestination(newDestination);
   };
 
   return (
@@ -25,6 +30,9 @@ export const DataProvider = (props) => {
         questionData,
         setQuestionData,
         handleChangeProcess,
+        chosenDestination,
+        setChosenDestination,
+        handleAddChosenDestination,
       }}
     >
       {props.children}

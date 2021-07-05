@@ -15,7 +15,3 @@ button {
 button:focus {
   outline: 0;
 }
-
-.app {
-  background-color: #f6f8ef;
-}

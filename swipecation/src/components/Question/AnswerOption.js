@@ -32,12 +32,13 @@ const AnswerOption = (props) => {
         <button
           style={{
             fontWeight: "700",
-            color: COLOR.TERTIARY,
+            color: COLOR.DARK,
             fontSize: "1rem",
             width: "100%",
             padding: padding,
-            border: `2px solid ${COLOR.PRIMARY}`,
+            border: `2px solid rgba(255, 255, 255, 0.6)`,
             borderRadius: "12px",
+            backgroundColor: "rgba(255, 185, 219, 0.3)",
           }}
           onClick={handleAnswer}
         >

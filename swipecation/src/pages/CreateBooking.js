@@ -4,7 +4,6 @@ import City from "../components/City/City";
 import Question from "../components/Question/Question";
 import Staycation from "../components/Staycation/Staycation";
 import { DataContext } from "../context/data";
-import Stepper from "react-stepper-horizontal";
 import { COLOR } from "../constants/Style";
 
 const CreateBooking = () => {
@@ -41,7 +40,7 @@ const CreateBooking = () => {
     <>
       <div>
         <div>
-          {processNo > 0 ? (
+          {/* {processNo > 0 ? (
             <div>
               <div className="d-flex justify-content-between">
                 <button
@@ -85,7 +84,7 @@ const CreateBooking = () => {
             </div>
           ) : (
             ""
-          )}
+          )} */}
         </div>
         {getBookingProcessElement()}
       </div>

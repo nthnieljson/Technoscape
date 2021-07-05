@@ -1,50 +1,23 @@
-// import React, { useContext } from "react";
-// import { DataContext } from "../../context/data";
-
-// const Staycation = () => {
-//   const { handleChangeProcess } = useContext(DataContext);
-//   const handleSelectStaycation = () => {
-//     handleChangeProcess(3);
-//   };
-//   return (
-//     <>
-//       <div>
-//         <button onClick={handleSelectStaycation}>Submit Staycation</button>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Staycation;
-
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext, useEffect } from "react";
 // import TinderCard from '../react-tinder-card/index'
 import TinderCard from "react-tinder-card";
 import SkipIcon from "../../assets/icons/swipe-cross.svg";
 import ChooseIcon from "../../assets/icons/swipe-love.svg";
+import { DESTINATION_DATA } from "../../constants/Destination";
 import { COLOR } from "../../constants/Style";
+import { DataContext } from "../../context/data";
 
-const db = [
-  {
-    name: "Richard Hendricks",
-    url: "../../images/city-1.jpg",
-  },
-  {
-    name: "Erlich Bachman",
-    url: "../../images/city-2.jpg",
-  },
-  {
-    name: "Monica Hall",
-    url: "../../images/highland-park-resort-bogor.jpg",
-  },
-];
+const db = DESTINATION_DATA;
 
 const alreadyRemoved = [];
+const chosenDestination = [];
 let charactersState = db; // This fixes issues with updating destinations state forcing it to use the current state and not the state that was active when the card was created.
 
 const Staycation = () => {
   const [destinations, setDestinations] = useState(db);
   const [lastDirection, setLastDirection] = useState();
+  const { handleAddChosenDestination, setProcessNo } = useContext(DataContext);
+  const [showDetail, setShowDetail] = useState(false);
 
   const childRefs = useMemo(
     () =>
@@ -54,11 +27,15 @@ const Staycation = () => {
     []
   );
 
-  const swiped = (direction, nameToDelete) => {
+  const swiped = (direction, destination) => {
+    const nameToDelete = destination.name;
     console.log("removing: " + nameToDelete);
     setLastDirection(direction);
     console.log(direction);
     alreadyRemoved.push(nameToDelete);
+    if (direction === "right") {
+      chosenDestination.push(destination);
+    }
   };
 
   const outOfFrame = (name) => {
@@ -82,15 +59,102 @@ const Staycation = () => {
     }
   };
 
-  return (
+  useEffect(() => {
+    return () => {
+      handleAddChosenDestination(chosenDestination);
+    };
+  }, []);
+
+  return showDetail ? (
     <>
       <div>
-        <h1>React Tinder Card</h1>
-        {/* <img src={`images/${db[0].url}`} /> */}
+        <button onClick={() => setShowDetail(false)}>back</button>
+        <div
+          style={{
+            backgroundImage: `url(../../images/${
+              destinations[destinations.length - 1].url
+            })`,
+            position: "relative",
+            width: "100%",
+            height: "400px",
+            borderRadius: "10px",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          className="mb-4"
+        ></div>
+        <div
+          style={{
+            background: "rgba(255, 255, 255, 0.5)",
+            padding: "1rem",
+            borderRadius: "10px",
+          }}
+        >
+          <p
+            style={{
+              margin: "0",
+              fontWeight: "600",
+              color: COLOR.DARK,
+              fontSize: "1.15rem",
+            }}
+          >
+            {destinations[destinations.length - 1].name}
+          </p>
+          <p
+            style={{
+              fontSize: ".9rem",
+            }}
+            className="mb-2"
+          >
+            {destinations[destinations.length - 1].location}
+          </p>
+          <p
+            style={{
+              fontSize: ".9rem",
+              color: COLOR.DARK,
+              fontWeight: "600",
+            }}
+            className="mt-4 mb-5"
+          >
+            {destinations[destinations.length - 1].description}
+          </p>
+          <div className="d-flex justify-content-end">
+            <p
+              style={{
+                fontSize: ".9rem",
+
+                fontWeight: "600",
+              }}
+            >
+              IDR {destinations[destinations.length - 1].price}K / night
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  ) : (
+    <>
+      <div>
+        {chosenDestination.length !== 0 ? (
+          <div className="d-flex justify-content-end mb-3">
+            <button
+              style={{
+                color: COLOR.DARK,
+                fontWeight: "bold",
+              }}
+              onClick={() => setProcessNo(3)}
+            >
+              <u>Go To Checkout</u>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
         <div
           className="d-flex justify-content-center"
           style={{
-            height: "350px",
+            height: "505px",
           }}
         >
           {destinations.map((destination, index) => (
@@ -98,38 +162,76 @@ const Staycation = () => {
               ref={childRefs[index]}
               className="swipe"
               key={destination.name}
-              onSwipe={(dir) => swiped(dir, destination.name)}
+              onSwipe={(dir) => swiped(dir, destination)}
               onCardLeftScreen={() => outOfFrame(destination.name)}
             >
               <div
                 style={{
-                  backgroundImage: "url(" + destination.url + ")",
-                  position: "relative",
-                  width: "80vw",
-                  height: "300px",
-                  borderRadius: "10px",
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  background: "#FFFFFF",
+                  boxShadow: "0px 0px 5px 2px rgba(0, 0, 0, 0.1)",
+                  borderRadius: "20px",
+                  padding: ".5rem",
                 }}
-                className="card"
               >
+                <div
+                  style={{
+                    backgroundImage: `url(../../images/${destination.url})`,
+                    position: "relative",
+                    width: "80vw",
+                    height: "400px",
+                    borderRadius: "10px",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                  }}
+                  className="card"
+                ></div>
                 <h3
                   style={{
-                    position: "absolute",
                     bottom: "0",
-                    margin: "10px",
-                    color: "#ffffff",
-                    backgroundColor: "rgba(0,0,0,0.50)",
-                    padding: ".75rem 1rem",
+                    margin: "1rem 0 0",
+                    color: COLOR.DARK,
+
                     borderRadius: "7.5px",
+                    fontSize: "1.15rem",
+                    fontWeight: "600",
                   }}
+                  className="ml-3"
                 >
                   {destination.name}
                 </h3>
+                <p
+                  style={{
+                    margin: ".25rem 0 1rem",
+                    fontWeight: "500",
+                    fontSize: ".875rem",
+                    color: COLOR.ACCENT_1,
+                  }}
+                  className="ml-3"
+                >
+                  {destination.location}
+                </p>
               </div>
             </TinderCard>
           ))}
         </div>
+        {destinations.length !== 0 ? (
+          <div className="d-flex justify-content-end mt-0">
+            <button
+              style={{
+                margin: "0 1rem",
+                fontWeight: "500",
+                fontSize: ".875rem",
+                color: COLOR.DARK,
+              }}
+              className="mr-3"
+              onClick={() => setShowDetail(true)}
+            >
+              <u>See Detail</u>
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
         <div className="tinder-cards-buttons">
           <button className="tinder-cards-button" onClick={() => swipe("left")}>
             <img src={SkipIcon} alt="" />
@@ -141,15 +243,6 @@ const Staycation = () => {
             <img src={ChooseIcon} alt="" />
           </button>
         </div>
-        {lastDirection ? (
-          <h2 key={lastDirection} className="infoText">
-            You swiped {lastDirection}
-          </h2>
-        ) : (
-          <h2 className="infoText">
-            Swipe a card or press a button to get started!
-          </h2>
-        )}
       </div>
       <style>
         {`
@@ -202,15 +295,17 @@ const Staycation = () => {
           justify-content: space-around;
         }
 
-        .tinder-cards-button {
-          border: 2px solid ${COLOR.SECONDARY};
-          border-radius: 100%;
-          background: ${COLOR.PRIMARY};
-          width: 60px;
-          height: 60px;
-          display: grid;
-          place-items: center;
+        .tinder-cards-buttons {
+          display: flex;
+          width: 80%;
+          margin: 2.5rem auto;
+          justify-content: space-around;
+          background-color: rgba(255, 255, 255, 0.9);
+          border-radius: 20px;
+          padding: .25rem 0;
+          box-shadow: 0px 0px 11px 5px rgba(0, 0, 0, 0.1);
         }
+  
         
       `}
       </style>

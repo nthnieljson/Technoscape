@@ -1,31 +1,142 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { COLOR } from "../../constants/Style";
+import { DataContext } from "../../context/data";
 import gopay from "../../images/gopay.png";
 import ovo from "../../images/ovo.png";
 
 const Checkout = () => {
   const [showTransfer, setShowTransfer] = useState(false);
+  const { chosenDestination } = useContext(DataContext);
 
   const handleClick = (e) => {
     e.preventDefault();
     setShowTransfer(true);
   };
 
+  const findTotalPrice = () => {
+    let total = 0;
+    chosenDestination.map((destination) => {
+      total += destination.price;
+    });
+
+    return total;
+  };
+
+  const itineraries = [
+    {
+      name: "Free Breakfast for 2 people",
+      price: "Free",
+    },
+    {
+      name: "Breakfast",
+      price: "IDR 35K / person / day",
+    },
+    {
+      name: "Access to Gym",
+      price: "IDR 100K",
+    },
+    {
+      name: "Access to Spa",
+      price: "IDR 50K",
+    },
+    {
+      name: "Bird Hunting",
+      price: "IDR 40K / person",
+    },
+  ];
+
   return (
     <div>
       <h4 className="center checkout">Checkout</h4>
-      <div className="split penginapan">
-        <p>Penginapan A</p>
-        <p>IDR 770K</p>
-      </div>
-      <div className="split penginapan">
-        <p>Penginapan B</p>
-        <p>IDR 520K</p>
-      </div>
+      {chosenDestination.map((destination) => {
+        return (
+          <div className="mb-4">
+            <div className="split penginapan">
+              <p
+                style={{
+                  color: COLOR.DARK,
+                  fontWeight: "bold",
+                  fontSize: "1.25rem",
+                }}
+              >
+                {destination.name}
+              </p>
+              <p
+                style={{
+                  fontWeight: "bold",
+                }}
+              >
+                IDR {destination.price}K
+              </p>
+            </div>
+            {showTransfer ? (
+              ""
+            ) : (
+              <>
+                <div className="d-flex justify-content-between">
+                  <div
+                    style={{
+                      width: "45%",
+                    }}
+                  >
+                    <p>Start Date</p>
+                    <input
+                      style={{
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      width: "45%",
+                    }}
+                  >
+                    <p>End Date</p>
+                    <input
+                      style={{
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="mt-3">
+                  <p
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    Itineraries
+                  </p>
+                  {itineraries.map((event) => {
+                    return (
+                      <div
+                        className="d-flex mt-2 mb-2 align-items-center"
+                        style={{
+                          padding: "2rem 1rem",
+                          backgroundColor: "rgba(255,255,255,0.5)",
+                          borderRadius: "10px",
+                          border: `1px solid ${COLOR.DARK}`,
+                        }}
+                      >
+                        <input type="checkbox" value={event.name} />
+                        <div className="ml-4">
+                          <p>{event.name}</p>
+                          <p>{event.price}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+          </div>
+        );
+      })}
       <hr />
       <div className="split">
         <p className="p-bold">Total</p>
-        <h4 className="tertiary">IDR 1290K</h4>
+        <h4 className="tertiary">IDR {findTotalPrice()}K</h4>
       </div>
       {showTransfer ? (
         <div className="stage-two">
