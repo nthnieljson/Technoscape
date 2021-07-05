@@ -31,17 +31,14 @@ List the ready features here:
 
 
 ## Screenshots
-1. Landing Page
-![Landing Page - 1]()
+1. Describe
+![Cleanup Events List - 1](./screenshots/describe.png)
 
-2. Describe
-![Cleanup Events List - 1]()
+2. Explore
+![Cleanup Events Details - 1](./screenshots/explore.png)
 
-3. Explore
-![Cleanup Events Details - 1]()
-
-4. Plan
-![Create Event - 1]()
+3. Plan
+![Create Event - 1](./screenshots/plan.png)
 
 
 
